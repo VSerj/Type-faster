@@ -1,6 +1,26 @@
 extend ../layout/base.pug
 block content
-
-  h1.test
-    | Type faster
-
+  .grid
+    .content
+      h1
+        | Type faster
+      .statistics 
+        | Statistis
+      .radio-buttons
+        - var timeArr = ["10", "30", "60"]
+        each time, ind in timeArr
+          +input-radio-time(
+            { name: 'time', time: time, checked: !ind }
+          )
+      .api-text
+        | Api text
+      textarea
+        | TextArea
+      .indicator
+        | indicator
+      .buttons
+        button.btn
+          | Start
+        button.btn.disabled
+          | Stop
+          
