@@ -4,7 +4,10 @@ block content
     h1.title.thin
       | Type faster
     .statistics
-      | Statistis
+      .statistics__text
+        | Stats
+      a.statistics__btn.btn-floating
+        i.material-icons insert_chart
 
   main.main.container
     .radio-buttons
@@ -15,13 +18,15 @@ block content
         )
 
     .api-text.z-depth-1
-      | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
-      | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
+      .api-text__overlay
+        | API text
+      //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
+      //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
       //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
       //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
       //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
 
-    textarea.materialize-textarea(placeholder="Type this")
+    textarea.materialize-textarea(placeholder="Type here...")
 
     .control
       .indicator

@@ -1,7 +1,5 @@
 .statistics {
   position: absolute;
-  padding: 10px;
-  background-color: rgb(175, 216, 216);
 
   @media only screen and (min-width: 0) {
     top: 7px;
@@ -12,4 +10,17 @@
     top: 15px;
     right: 15px;
   }
+}
+
+.statistics__text {
+  transform: translate(-17px, 7px) rotate(-45deg);
+}
+
+.statistics__btn {
+  transition: colors 0.3 linear;
+  background-color: #00897b;
+}
+
+.statistics__btn:hover {
+  background-color: #26a69a;
 }

@@ -11,3 +11,13 @@
     font-size: 1em;
   }
 }
+
+.api-text__overlay {
+  text-align: center;
+  font-size: 3rem;
+  color: #c8e4e1;
+}
+
+.api-text:hover .api-text__overlay {
+  display: none;
+}
