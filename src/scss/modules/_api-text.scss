@@ -1,4 +1,23 @@
 .api-text {
-  min-height: 200px;
-  background-color: rgb(240, 237, 245);
+  padding: 10px;
+  overflow: hidden;
+  background-color: rgb(230, 239, 240);
+
+  @media only screen and (min-width: $small-screen) {
+    font-size: 1.2em;
+  }
+
+  @media only screen and (min-width: 0) {
+    font-size: 1em;
+  }
+}
+
+.api-text__overlay {
+  text-align: center;
+  font-size: 3rem;
+  color: #c8e4e1;
+}
+
+.api-text:hover .api-text__overlay {
+  display: none;
 }

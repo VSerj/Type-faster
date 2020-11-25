@@ -1,27 +1,43 @@
 extend ../layout/base.pug
 block content
-  .grid
-    .content
-      h1
-        | Type faster
-      .statistics
-        | Statistis
-      .radio-buttons
-        - var timeArr = ["10", "30", "60"]
-        each time, ind in timeArr
-          +input-radio-time(
-            { name: 'time', time: time, checked: !ind }
-          )
-      .api-text
-        | Api text
-      textarea
-        | TextArea
+  header.header
+    h1.title.thin
+      | Type faster
+    .statistics
+      .statistics__text
+        | Stats
+      a.statistics__btn.btn-floating
+        i.material-icons insert_chart
+
+  main.main.container
+    .radio-buttons
+      - var timeArr = ["10", "30", "60"]
+      each time, ind in timeArr
+        +input-radio-time(
+          { name: 'time', time: time, checked: !ind }
+        )
+
+    .api-text.z-depth-1
+      .api-text__overlay
+        | API text
+      //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
+      //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
+      //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
+      //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
+      //- | Api text Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur cum excepturi laboriosam adipisci cumque atque enim animi veritatis voluptate, corrupti accusantium est incidunt beatae quaerat quibusdam itaque, molestias magni quos?
+
+    textarea.materialize-textarea(placeholder="Type here...")
+
+    .control
       .indicator
-        | indicator
+        .indicator__text
+          | : )
+        .indicator-battery
       .buttons
-        button.btn
+        button.btn.buttons__start
           | Start
-        button.btn.disabled
+        button.btn.buttons__stop.disabled
           | Stop
       .timer
-        | timer 55 sec
+        span.timer__number 55
+        span s

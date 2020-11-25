@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (min-width: 0) {
+    margin: 0 0 1.1rem 0;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 45vh 20vh 1fr;
+  // minmax(33vh, max-content)
+
+  @media only screen and (min-width: $small-screen) {
+    gap: 1.5rem;
+  }
+
+  @media only screen and (min-width: 0) {
+    gap: 1rem;
+  }
+
+  @media only screen and (max-height: 455px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2rem 65vh 1fr;
+    gap: 1rem;
+  }
+}

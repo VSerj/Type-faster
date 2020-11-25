@@ -1,9 +1,13 @@
 @import "/base/_base.scss";
 @import "/materialize/materialize.scss";
+@import "/commons/_commons.scss";
+@import "layout/layout.scss";
 @import "/modules/_api-text.scss";
 @import "/modules/_radio-buttons.scss";
 @import "/modules/_textarea.scss";
 @import "/modules/_statistics.scss";
-@import "/modules/_indicator.scss";
-@import "/modules/_timer.scss";
+@import "/modules/control/_control.scss";
+@import "/modules/control/_buttons.scss";
+@import "/modules/control/_indicator.scss";
+@import "/modules/control/_timer.scss";
 @import "/themes/_night.scss";

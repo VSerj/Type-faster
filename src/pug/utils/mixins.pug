@@ -1,10 +1,10 @@
 mixin input-radio-time(options)
-  label(id=`time-${options.time}`)
+  input(
+    type="radio"
+    name=options.name
+    id=`time-${options.time}`
+    value=options.time
+    checked=options.checked ? true : false
+  )
+  label(for=`time-${options.time}` class=options.name)
     | #{options.time} sec
-    input(
-      type="radio"
-      name=options.name
-      id=`time-${options.time}`
-      value=options.time
-      checked=options.checked ? true : false
-    )

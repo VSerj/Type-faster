@@ -1,0 +1,14 @@
+// изменил станд.отступы библиотеки
+[type="radio"]:checked + .time,
+[type="radio"]:not(:checked) + .time {
+  margin-right: 14px;
+  padding-left: 28px;
+}
+
+.radio-buttons {
+  margin: 0 auto;
+  
+  @media only screen and (max-height: 455px) {
+    grid-column: 1 / 3;
+  }
+}

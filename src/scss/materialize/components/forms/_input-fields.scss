@@ -29,10 +29,10 @@ textarea.materialize-textarea {
   border-bottom: $input-border;
   border-radius: 0;
   outline: none;
-  height: $input-height;
+  // height: $input-height;
   width: 100%;
   font-size: $input-font-size;
-  margin: $input-margin;
+  // margin: $input-margin;
   padding: $input-padding;
   box-shadow: none;
   box-sizing: content-box;
@@ -277,7 +277,7 @@ textarea.materialize-textarea {
 // Default textarea
 textarea {
   width: 100%;
-  height: $input-height;
+  // height: $input-height;
   background-color: transparent;
 
   &.materialize-textarea {
