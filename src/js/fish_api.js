@@ -31,43 +31,36 @@ function json(response) {
 function jsonStatus(json) {
   const { status, text, errorCode } = json;
   if (status === 'success') {
-    return Promise.resolve(text)
+    return Promise.resolve(text);
   }
   if (status === 'error') {
-    return Promise.reject(new ApiError(errorCode))
+    return Promise.reject(new ApiError(errorCode));
   }
-}
-
-function wrapSymbols(text) {
-  return text.replace(/./g, `<span>$&</span>`)
 }
 
 // Добавляет текст в поле.
-// Первый параметр - строка, второй - 
-function insertIntoField(text, isCharAsDomElem=false) {
-  if (!textFieldoverlay.hidden) {
-    textFieldoverlay.hidden = true;
+// Первый параметр - строка, второй - для оборачивания символов в span
+function insertIntoField(text, isCharAsDomElem = false) {
+  if (isCharAsDomElem) {
+    return textField.innerHTML = text.replace(/./g, `<span class=char>$&</span>`)
+    // return textField.insertAdjacentHTML('beforeend', HTML);
   }
 
-  if (isCharAsDomElem) {
-    const HTML = wrapSymbols(text)
-    return textField.insertAdjacentHTML('beforeend', HTML)
-  }
-  
-  return textField.textContent = text;
+  return (textField.textContent = text);
 }
 
 function showText(text) {
-  const start = Date.now()
-  
-  insertIntoField(text, true)
-  const res = start - Date.now()
+  const start = Date.now();
+
+  insertIntoField(text, true);
+
+  const res = start - Date.now();
   console.log(res);
 }
 
 function handleError(error) {
   if (error instanceof HttpError) {
-    console.log('недоступен API')
+    console.log('недоступен API');
     // Если постоянная, сообщить "в процессе воставноления" и предложить свой текст
   }
   if (error instanceof ApiError) {
@@ -89,5 +82,5 @@ startBtn.addEventListener('click', () => {
     .then(jsonStatus)
     .then(showText)
     // .then(showText)
-    .catch(handleError)
+    .catch(handleError);
 });
