@@ -1,14 +1,14 @@
-class HttpError extends Error {
+export class HttpError extends Error {
   constructor(message) {
     super(message);
     this.name = 'HttpError';
   }
 }
 
-class ApiError extends Error {
-  constructor(status) {
+export class ApiError extends Error {
+  constructor(errorCode) {
     super(errorCode);
     this.name = 'ApiError';
-    this.status = errorCode;
+    this.code = errorCode;
   }
 }
