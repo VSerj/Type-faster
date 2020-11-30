@@ -1,4 +1,5 @@
-.api-text {
+.api-text-field {
+  position: relative;
   padding: 10px;
   overflow: hidden;
   background-color: rgb(230, 239, 240);
@@ -12,12 +13,12 @@
   }
 }
 
-.api-text__overlay {
-  text-align: center;
-  font-size: 3rem;
-  color: #c8e4e1;
-}
-
-.api-text:hover .api-text__overlay {
-  display: none;
+.api-text-field__errorOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(255, 192, 203, 0.603);
 }
