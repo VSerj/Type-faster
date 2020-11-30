@@ -1,7 +1,7 @@
 # Type faster
 
 ### What is that?
-  It will be a simple keyboard simulator (rus layout).
+  It will be a simple keyboard trainer (rus layout).
 
   You will need to choose a time for typing, at the end of the time you can view statistics.
 When typing, an indicator of the typing speed will be shown, and errors will also be taken into account. A typing error prevents you from continuing typing until you correct it.
