@@ -1,53 +1,40 @@
+'use strict';
+
 import { ApiError, HttpError } from './custom-error.js';
 import { tempText } from './temp-text.js';
 import { textField } from './vars.js';
 
 export function textfromApi() {
+  textField.innerHTML = 'Подождите, текст загружается...'
   fetch('https://fish-text.ru/get?number=4')
-    .then(status)
-    .then(json)
-    .then(jsonStatus)
+    .then(response =>
+      response.ok
+        ? response.json()
+        : Promise.reject(new HttpError(response.statusText))
+    )
+    // проверка статуса внутри json из API
+    .then(({ status, text, errorCode }) =>
+      status === 'success' ? text : Promise.reject(new ApiError(errorCode))
+    )
     .then(showText)
     .catch(handleError);
-}
-
-function status(response) {
-  if (response.ok) {
-    return Promise.resolve(response);
-  } else {
-    return Promise.reject(new HttpError(response.statusText));
-  }
-}
-
-function json(response) {
-  return response.json();
-}
-
-// проверка статуса внутри json из API
-function jsonStatus(json) {
-  const { status, text, errorCode } = json;
-  if (status === 'success') {
-    return Promise.resolve(text);
-  }
-  if (status === 'error') {
-    return Promise.reject(new ApiError(errorCode));
-  }
 }
 
 // Добавляет текст в поле.
 function showText(text) {
   return (textField.innerHTML = text.replace(
     /./g,
-    `<span class=char>$&</span>`
+    `<span class="char">$&</span>`
   ));
 }
 
 function showErrorText(text) {
-  // Первая проверка временно, добавить один раз
+  // Первая проверка для устарнения дублирования.
   if (textField.querySelector('.api-text-field__errorOverlay')) return;
   if (typeof text !== 'string') return;
 
   const overlay = document.createElement('div');
+
   overlay.className = 'api-text-field__errorOverlay';
   overlay.textContent = text;
   textField.append(overlay);
@@ -59,8 +46,6 @@ function showErrorText(text) {
 }
 
 function handleError(error) {
-  console.log(error.name);
-  // TypeError прилетает из примера https://1
   if (error instanceof HttpError || error.name === 'TypeError') {
     showErrorText(`Сервис генерации случайного текста недоступен. 
       Запустить с текстом, что есть у нас? Для продолжения кликните 
