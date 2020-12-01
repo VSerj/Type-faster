@@ -1,0 +1,17 @@
+.text-field__area {
+  position: relative;
+  height: 100%;
+  padding: 1.5rem;
+  overflow: hidden;
+  background-color: rgb(230, 239, 240);
+  color: rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.02em;
+
+  @media only screen and (min-width: $small-screen) {
+    font-size: 1.3em;
+  }
+
+  @media only screen and (min-width: 0) {
+    font-size: 1.1em;
+  }
+}
