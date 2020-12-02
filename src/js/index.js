@@ -5,6 +5,10 @@
 'use strict';
 
 import { textfromApi } from './text-from-api.js';
+import { handleCountdownTiming } from './timer.js';
 import { startBtn } from './vars.js';
 
-startBtn.addEventListener('click', textfromApi);
+window.addEventListener('load', () => {
+  handleCountdownTiming()
+  startBtn.addEventListener('click', textfromApi);
+})
