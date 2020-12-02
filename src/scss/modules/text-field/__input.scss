@@ -1,0 +1,20 @@
+.text-field input.text-field__input {
+  position: absolute;
+  left: 0;
+  top: -10px;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  opacity: 0;
+  outline: 0;
+  border: none;
+  background-color: transparent;
+  caret-color: transparent;
+  clip: rect(0 0 0 0);
+  color: transparent;
+
+  &:focus {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}

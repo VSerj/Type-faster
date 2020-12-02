@@ -6,7 +6,7 @@ import { textField } from './vars.js';
 
 export function textfromApi() {
   textField.innerHTML = 'Подождите, текст загружается...'
-  fetch('https://fish-text.ru/get?number=4')
+  fetch('https://fish-text.ru/get?numbеr=4')
     .then(response =>
       response.ok
         ? response.json()
@@ -30,12 +30,12 @@ function showText(text) {
 
 function showErrorText(text) {
   // Первая проверка для устарнения дублирования.
-  if (textField.querySelector('.api-text-field__errorOverlay')) return;
+  if (textField.querySelector('.text-field__errorOverlay')) return;
   if (typeof text !== 'string') return;
 
   const overlay = document.createElement('div');
 
-  overlay.className = 'api-text-field__errorOverlay';
+  overlay.className = 'text-field__errorOverlay';
   overlay.textContent = text;
   textField.append(overlay);
   // добавляю свой текст

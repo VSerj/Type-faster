@@ -16,11 +16,10 @@ block content
         +input-radio-time(
           { name: 'time', time: time, checked: !ind }
         )
-
-    .api-text-field.z-depth-1
-
-    textarea.materialize-textarea(placeholder="Type here...")
-
+    .text-field
+      .text-field__area.z-depth-1
+      input.text-field__input(type="text" tabindex="-1")
+      
     .control
       .indicator
         .indicator__text

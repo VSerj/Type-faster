@@ -7,8 +7,4 @@
 
 .radio-buttons {
   margin: 0 auto;
-  
-  @media only screen and (max-height: 455px) {
-    grid-column: 1 / 3;
-  }
 }
