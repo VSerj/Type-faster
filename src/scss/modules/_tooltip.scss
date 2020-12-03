@@ -1,0 +1,31 @@
+@keyframes zoomin {
+  from {
+    transform: scale(0.3);
+    transform: translateY(-100%)
+  }
+  50% {
+    transform: scale(0.9);;
+  }
+  to {
+    transform: translateY(0);
+    transform: scale(1);
+  }
+}
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  max-width: calc(100% - 4px);
+  min-height: 36px;
+  border-radius: 2px;
+  background-color: rgb(85, 92, 89);
+  padding: 10px 8px;
+  animation: zoomin 0.3s linear;
+  overflow: hidden;
+  text-align: center;
+  line-height: 120%;
+  font-size: 1rem;
+  pointer-events: none;
+  color: rgb(255, 255, 255);
+}

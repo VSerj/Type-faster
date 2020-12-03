@@ -1,15 +1,17 @@
 'use strict';
 
 import { ApiError, HttpError } from './custom-error.js';
+import { makeElem } from './makeElem.js';
 import { tempText } from './temp-text.js';
-import { textField } from './vars.js';
+import { showTopToolTip } from './tooltip.js';
+import { startBtn, textField } from './vars.js';
 
 export function textfromApi() {
   textField.innerHTML = `
     <div class="progress">
       <div class="indeterminate"></div>
     </div>
-  `
+  `;
   fetch('https://fish-text.ru/get?numbеr=4')
     .then(response =>
       response.ok
@@ -26,6 +28,8 @@ export function textfromApi() {
 
 // Добавляет текст в поле.
 function showText(text) {
+  showTopToolTip('Начните печать для запуска таймера', startBtn)
+
   return (textField.innerHTML = text.replace(
     /./g,
     `<span class="char">$&</span>`
@@ -37,12 +41,13 @@ function showErrorText(text) {
   if (textField.querySelector('.text-field__errorOverlay')) return;
   if (typeof text !== 'string') return;
 
-  const overlay = document.createElement('div');
+  const overlay = makeElem({
+    classElem: 'text-field__errorOverlay',
+    textElem: text,
+    where: textField,
+  });
 
-  overlay.className = 'text-field__errorOverlay';
-  overlay.textContent = text;
-  textField.append(overlay);
-  // добавляю свой текст
+  // добавляю свой текст. при клике оверлей удаляем
   overlay.addEventListener('click', () => {
     showText(tempText);
     overlay.remove();
