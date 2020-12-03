@@ -4,11 +4,14 @@
 
 'use strict';
 
-import { textfromApi } from './text-from-api.js';
-import { handleCountdownTiming } from './timer.js';
 import { startBtn } from './vars.js';
+import { handleTimeSetting } from './timer.js';
+import { textfromApi } from './text-from-api.js';
 
 window.addEventListener('load', () => {
-  handleCountdownTiming()
-  startBtn.addEventListener('click', textfromApi);
-})
+  handleTimeSetting();
+  startBtn.addEventListener('click', () => {
+    startBtn.classList.add('disabled')
+    textfromApi();
+  });
+});

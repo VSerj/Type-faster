@@ -6,19 +6,23 @@ const timer = document.querySelector('.timer');
 const timerNumber = timer.querySelector('.timer__number');
 const radioBtns = document.querySelector('.radio-buttons');
 
-export function handleCountdownTiming() {
-  // if (isStart) return;
+export function handleTimeSetting() {
+  if (isStart) return;
+
+  setTime(+radioBtns.querySelector('input[checked]').value)
   radioBtns.addEventListener('change', ({ target }) => {
-    const inputNumber = +target.value;
+    setTime(+target.value)
+  });
+}
 
-    if (inputNumber == 0 || typeof inputNumber !== 'number') {
-      throw new AppError('Некорректные данные для таймера');
-    }
+function setTime(time) {
+  if (time == 0 || typeof time !== 'number') {
+    throw new AppError('Некорректные данные для таймера');
+  }
 
-    timerNumber.textContent = `${inputNumber}`;
-    timer.classList.add('timer--scale');
-    timer.addEventListener('animationend', () => {
-      timer.classList.remove('timer--scale');
-    });
+  timerNumber.textContent = `${time}`;
+  timer.classList.add('timer--scale');
+  timer.addEventListener('animationend', () => {
+    timer.classList.remove('timer--scale');
   });
 }
