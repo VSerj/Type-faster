@@ -5,7 +5,11 @@ import { tempText } from './temp-text.js';
 import { textField } from './vars.js';
 
 export function textfromApi() {
-  textField.innerHTML = 'Подождите, текст загружается...'
+  textField.innerHTML = `
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div>
+  `
   fetch('https://fish-text.ru/get?numbеr=4')
     .then(response =>
       response.ok
