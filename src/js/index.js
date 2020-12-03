@@ -4,14 +4,17 @@
 
 'use strict';
 
-import { startBtn } from './vars.js';
+import { startBtn, stopBtn } from './vars.js';
 import { handleTimeSetting } from './timer.js';
 import { textfromApi } from './text-from-api.js';
+import { states } from './states.js';
 
 window.addEventListener('load', () => {
   handleTimeSetting();
   startBtn.addEventListener('click', () => {
-    startBtn.classList.add('disabled')
+    states.isStart = true;
+    startBtn.classList.add('disabled');
+    stopBtn.classList.remove('disabled');
     textfromApi();
   });
 });

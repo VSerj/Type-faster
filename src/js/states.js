@@ -1,1 +1,3 @@
-export let isStart = false;
+export const states = {
+ isStart: false,
+}
