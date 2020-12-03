@@ -1,15 +1,15 @@
 'use strict';
 import { AppError } from './custom-error.js';
 import { states } from './states.js';
+import { radioBtns } from './vars.js';
 
 const timer = document.querySelector('.timer');
 const timerNumber = timer.querySelector('.timer__number');
-const radioBtns = document.querySelector('.radio-buttons');
 
 export function handleTimeSetting() {
-  setTime(+radioBtns.querySelector('input[checked]').value)
+  setTime(+radioBtns.querySelector('input[checked]').value);
   radioBtns.addEventListener('change', ({ target }) => {
-    setTime(+target.value)
+    setTime(+target.value);
   });
 }
 

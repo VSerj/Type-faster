@@ -2,16 +2,20 @@
 
 import { ApiError, HttpError } from './custom-error.js';
 import { makeElem } from './makeElem.js';
+import { states } from './states.js';
 import { tempText } from './temp-text.js';
 import { showTopToolTip } from './tooltip.js';
 import { startBtn, textField } from './vars.js';
 
 export function textfromApi() {
+  states.isLoading = true;
+
   textField.innerHTML = `
     <div class="progress">
       <div class="indeterminate"></div>
     </div>
   `;
+
   fetch('https://fish-text.ru/get?numbеr=4')
     .then(response =>
       response.ok
@@ -28,7 +32,8 @@ export function textfromApi() {
 
 // Добавляет текст в поле.
 function showText(text) {
-  showTopToolTip('Начните печать для запуска таймера', startBtn)
+  states.isLoading = false;
+  // showTopToolTip('Начните печать для запуска таймера', startBtn, 'btn');
 
   return (textField.innerHTML = text.replace(
     /./g,

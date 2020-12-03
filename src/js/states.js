@@ -1,4 +1,5 @@
 export const states = {
- isStart: false,
- isTyping: false,
-}
+  isStart: false,
+  isTyping: false,
+  isLoading: false,
+};
