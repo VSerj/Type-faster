@@ -8,3 +8,15 @@
 .radio-buttons {
   margin: 0 auto;
 }
+
+.radio-buttons.disabled {
+  pointer-events: none;
+  box-shadow: none;
+  color: $button-disabled-color !important;
+  cursor: default;
+
+  label:after {
+    background-color: $button-disabled-color;
+    border: 2px solid $button-disabled-color;
+  }
+}

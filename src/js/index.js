@@ -5,9 +5,9 @@
 'use strict';
 
 import { initControlBtn } from './start-stop.js';
-import { handleTimeSetting } from './timer.js';
+import { initTimeSetting } from './timer.js';
 
 window.addEventListener('load', () => {
-  handleTimeSetting();
+  initTimeSetting();
   initControlBtn();
 });

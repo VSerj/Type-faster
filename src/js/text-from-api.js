@@ -33,7 +33,7 @@ export function textfromApi() {
 // Добавляет текст в поле.
 function showText(text) {
   states.isLoading = false;
-  showTopToolTip('Начните печать для запуска таймера', startBtn, 'prestart');
+  showTopToolTip('Начните печать для запуска таймера', textField, 'prestart');
 
   return (textField.innerHTML = text.replace(
     /./g,

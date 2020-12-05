@@ -1,24 +1,26 @@
 import { startBtn, stopBtn, radioBtns } from './vars.js';
-import { handleTimeSetting } from './timer.js';
 import { textfromApi } from './text-from-api.js';
 import { states } from './states.js';
 import { startTyping } from './temp-helpers-dev.js';
 import { removeTooltip } from './tooltip.js';
+import { setTime } from './timer.js'
 
 export function initControlBtn() {
   startBtn.addEventListener('click', initStatBtn);
   stopBtn.addEventListener('click', initStopBtn);
 }
 
-function initStatBtn(e) {
-  console.log(e.target);
-  states.isStart = true;
-  // Запрещаю выбора времени, выбор недоступен.
-  radioBtns.style.pointerEvents = 'none';
-  startBtn.classList.add('disabled');
-  stopBtn.classList.remove('disabled');
+export function end() {
+  states.isTyping = false;
+  toggleControlParams();
+  document.removeEventListener('keydown', startTyping);
+  setTime(+radioBtns.querySelector('input:checked').value); // временно
+}
+
+function initStatBtn() {
+  toggleControlParams()
   textfromApi();
-  // обратный отсчет и фокус в невидимый nput
+  // обратный отсчет и фокус в невидимый input
   document.addEventListener('keydown', startTyping);
 }
 
@@ -31,12 +33,9 @@ function initStopBtn() {
   removeTooltip('prestart');
 }
 
-export function end() {
-  states.isTyping = false;
-  states.isStart = false;
-  startBtn.classList.remove('disabled');
-  stopBtn.classList.add('disabled');
-  radioBtns.style.pointerEvents = 'auto';
-  document.removeEventListener('keydown', startTyping);
-  handleTimeSetting();
+function toggleControlParams() {
+  states.isStart = !states.isStart;
+  radioBtns.classList.toggle('disabled');
+  startBtn.classList.toggle('disabled');
+  stopBtn.classList.toggle('disabled');
 }

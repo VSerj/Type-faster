@@ -8,9 +8,9 @@ const timer = document.querySelector('.timer');
 const timerNumber = timer.querySelector('.timer__number');
 let time;
 
-export function handleTimeSetting() {
+export function initTimeSetting() {
   // установка времени в таймер после загрузки страницы.
-  setTime(+radioBtns.querySelector('input[checked]').value);
+  setTime(+radioBtns.querySelector('input:checked').value);
   // установка времени из предоставленных опций.
   radioBtns.addEventListener('change', ({ target }) => {
     setTime(+target.value);
@@ -18,15 +18,18 @@ export function handleTimeSetting() {
 }
 // Обратный отсчет. На последних сек. увеличиваем таймер.
 export function countdown() {
-  timerNumber.textContent = `${--time}`;
-  if (time < 4) {
+  if (!states.isTyping) return;
+
+  if (time < 5) {
     scaleTimer();
   }
+
+  timerNumber.textContent = `${--time}`;
   return time < 0 ? end() : setTimeout(countdown, 1000);
 }
 
-function setTime(selectedTime) {
-  // Если нажато старт, то значения таймера не изменить.
+export function setTime(selectedTime) {
+  // Если активна кнопка старт, изменять значение таймера запрещено.
   if (states.isStart) return;
 
   if (
@@ -34,7 +37,7 @@ function setTime(selectedTime) {
     typeof selectedTime !== 'number' ||
     Number.isNaN(selectedTime)
   ) {
-    // ошбика для дева
+    // ошбика для разработчика (потом пропросить)
     throw new AppError('Некорректные данные для таймера');
   }
 
@@ -43,10 +46,10 @@ function setTime(selectedTime) {
   scaleTimer();
 }
 
-// увеличивает таймер
+// Увеличивает таймер в размере.
 function scaleTimer() {
   timer.classList.add('timer--scale');
-  // Удаляем по завершении анимации обработчик и селектор для анимации
+  // Удаляем по завершении анимации обработчик и селектор для анимации.
   const removeScale = () => {
     timer.classList.remove('timer--scale');
     timer.removeEventListener('animationend', removeScale);
