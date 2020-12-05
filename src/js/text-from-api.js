@@ -33,7 +33,7 @@ export function textfromApi() {
 // Добавляет текст в поле.
 function showText(text) {
   states.isLoading = false;
-  // showTopToolTip('Начните печать для запуска таймера', startBtn, 'btn');
+  showTopToolTip('Начните печать для запуска таймера', startBtn, 'prestart');
 
   return (textField.innerHTML = text.replace(
     /./g,
@@ -46,17 +46,21 @@ function showErrorText(text) {
   if (textField.querySelector('.text-field__errorOverlay')) return;
   if (typeof text !== 'string') return;
 
-  const overlay = makeElem({
+  let overlay = makeElem({
     classElem: 'text-field__errorOverlay',
     textElem: text,
     where: textField,
   });
 
-  // добавляю свой текст. при клике оверлей удаляем
-  overlay.addEventListener('click', () => {
+  // Добавляю свой текст. При клике оверлей удаляем. + очистка памяти
+  const overlayHandler = () => {
     showText(tempText);
     overlay.remove();
-  });
+    overlay.removeEventListener('click', overlayHandler);
+    overlay = null;
+  };
+
+  overlay.addEventListener('click', overlayHandler);
 }
 
 function handleError(error) {
