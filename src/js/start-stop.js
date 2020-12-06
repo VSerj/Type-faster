@@ -1,7 +1,7 @@
 import { startBtn, stopBtn, radioBtns } from './vars.js';
 import { textfromApi } from './text-from-api.js';
 import { states } from './states.js';
-import { startTyping } from './temp-helpers-dev.js';
+import { startTyping } from './utils_dev/start-typing.js';
 import { removeTooltip } from './tooltip.js';
 import { setTime } from './timer.js'
 
@@ -20,17 +20,14 @@ export function end() {
 function initStatBtn() {
   toggleControlParams()
   textfromApi();
-  // обратный отсчет и фокус в невидимый input
-  document.addEventListener('keydown', startTyping);
+  document.addEventListener('keydown', startTyping); // Запускаем отсчет.
 }
 
 function initStopBtn() {
-  // пока не покажется текст в поле
-  if (states.isLoading) return;
+  if (states.isLoading) return; // Пока не покажется текст в поле
 
   end();
-  // Для проверки и удаления подсказки, если она активна.
-  removeTooltip('prestart');
+  removeTooltip('prestart'); // Проверка на существование и удаления подсказки.
 }
 
 function toggleControlParams() {

@@ -1,11 +1,11 @@
 'use strict';
 
 import { ApiError, HttpError } from './custom-error.js';
-import { makeElem } from './makeElem.js';
+import { createElem } from './createElem.js';
 import { states } from './states.js';
-import { tempText } from './temp-text.js';
+import { tempText } from './utils_dev/temp-text.js';
 import { showTopToolTip } from './tooltip.js';
-import { startBtn, textField } from './vars.js';
+import { textField } from './vars.js';
 
 export function textfromApi() {
   states.isLoading = true;
@@ -46,7 +46,9 @@ function showErrorText(text) {
   if (textField.querySelector('.text-field__errorOverlay')) return;
   if (typeof text !== 'string') return;
 
-  let overlay = makeElem({
+  textField.innerHTML = '';
+
+  let overlay = createElem({
     classElem: 'text-field__errorOverlay',
     textElem: text,
     where: textField,

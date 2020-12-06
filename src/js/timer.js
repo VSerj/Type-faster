@@ -20,9 +20,7 @@ export function initTimeSetting() {
 export function countdown() {
   if (!states.isTyping) return;
 
-  if (time < 5) {
-    scaleTimer();
-  }
+  if (time < 5) scaleTimer();
 
   timerNumber.textContent = `${--time}`;
   return time < 0 ? end() : setTimeout(countdown, 1000);
@@ -37,7 +35,7 @@ export function setTime(selectedTime) {
     typeof selectedTime !== 'number' ||
     Number.isNaN(selectedTime)
   ) {
-    // ошбика для разработчика (потом пропросить)
+    // ошбика для разработчика (потом пробросить)
     throw new AppError('Некорректные данные для таймера');
   }
 

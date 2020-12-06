@@ -1,4 +1,4 @@
-export function makeElem({
+export function createElem({
   typeElem = 'div',
   classElem = '',
   textElem,

@@ -1,11 +1,13 @@
-import { makeElem } from './makeElem';
+'use strict';
+
+import { createElem } from './createElem';
 
 // функция создает ToolTip над указаным элементом,
 // добавляет в доку и додает идентификатор семантики
 // для возможности удалять необходимое и других целей
 export function showTopToolTip(text, where, idSemantic = 'common') {
   const box = where.getBoundingClientRect();
-  const toolTip = makeElem({ textElem: text, classElem: 'tooltip' });
+  const toolTip = createElem({ textElem: text, classElem: 'tooltip' });
 
   toolTip.setAttribute('data-tooltip', idSemantic);
   toolTip.style.top = `${box.top + pageYOffset - toolTip.offsetHeight - 6}px`;
@@ -19,7 +21,6 @@ export function removeTooltip(idSemantic) {
 
   if (tooltip) {
     tooltip.remove();
-    // очитска памяти
-    tooltip = null;
+    tooltip = null; // Очитска памяти.
   }
 }

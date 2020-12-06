@@ -2,10 +2,10 @@
 // которые еще не разработаны,
 // но необходимы для тестирования текущих разработок.
 
-import { states } from './states.js';
-import { textInput } from './vars.js';
-import { countdown } from './timer.js';
-import { removeTooltip } from './tooltip.js';
+import { states } from '../states.js';
+import { textInput } from '../vars.js';
+import { countdown } from '../timer.js';
+import { removeTooltip } from '../tooltip.js';
 
 // Для слушателя keydown при старте 
 // -запускаем обратный отсчет
