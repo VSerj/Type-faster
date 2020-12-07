@@ -1,3 +1,19 @@
+@keyframes scale {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.timer--scale {
+  animation: scale 0.5s linear
+}
+
 .timer__number {
   margin: 0 0.2rem 0 0;
   font-size: 1.2rem;

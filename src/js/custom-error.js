@@ -14,3 +14,10 @@ export class ApiError extends Error {
     this.code = errorCode;
   }
 }
+
+export class AppError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'AppError';
+  }
+}

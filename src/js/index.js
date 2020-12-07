@@ -4,7 +4,10 @@
 
 'use strict';
 
-import { textfromApi } from './text-from-api.js';
-import { startBtn } from './vars.js';
+import { initControlBtn } from './start-stop.js';
+import { initTimeSetting } from './timer.js';
 
-startBtn.addEventListener('click', textfromApi);
+window.addEventListener('load', () => {
+  initTimeSetting();
+  initControlBtn();
+});
