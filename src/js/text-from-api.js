@@ -1,11 +1,12 @@
 'use strict';
 
 import { ApiError, HttpError } from './custom-error.js';
-import { createElem } from './createElem.js';
 import { states } from './states.js';
 import { tempText } from './utils_dev/temp-text.js';
 import { showTopToolTip } from './tooltip.js';
 import { textField } from './vars.js';
+import { showModalWindow } from './modal-window.js';
+import { end } from './start-stop.js';
 
 export function textfromApi() {
   states.isLoading = true;
@@ -41,40 +42,39 @@ function showText(text) {
   ));
 }
 
-function showErrorText(text) {
-  // Первая проверка для устарнения дублирования.
-  if (textField.querySelector('.text-field__errorOverlay')) return;
-  if (typeof text !== 'string') return;
-
-  textField.innerHTML = '';
-
-  let overlay = createElem({
-    classElem: 'text-field__errorOverlay',
-    textElem: text,
-    where: textField,
-  });
-
-  // Добавляю свой текст. При клике оверлей удаляем. + очистка памяти
-  const overlayHandler = () => {
-    showText(tempText);
-    overlay.remove();
-    overlay.removeEventListener('click', overlayHandler);
-    overlay = null;
-  };
-
-  overlay.addEventListener('click', overlayHandler);
-}
-
 function handleError(error) {
   if (error instanceof HttpError || error.name === 'TypeError') {
-    showErrorText(`Сервис генерации случайного текста недоступен. 
-      Запустить с текстом, что есть у нас? Для продолжения кликните 
-      в это поле...`);
+    textField.innerHTML = '';
+
+    showModalWindow(
+      `
+      <h4>Сервис генерации случайного текста недоступен.</h4>
+      <p>Запустить с текстом, что есть у нас? Нажмите "Ок"</p>
+      <p>Для отмены нажмите "Close"</p>`,
+      {
+        extraClass: 'error',
+        helpHandlerOk: showText.bind(this, tempText),
+        helpHandlerClose: end,
+      }
+    );
   }
+
   if (error instanceof ApiError) {
-    const info = error.code === '21' ? ' - 120с' : ' - не известно на сколько';
-    showErrorText(`Сервис генерации случайного текста недоступен ${info}. 
-    Запустить с текстом, что есть у нас? Для продолжения кликните 
-    в это поле...`);
+    textField.innerHTML = '';
+
+    const info = error.code === '21' ? '2 минуты' : 'пока не известно';
+
+    showModalWindow(
+      `
+      <h4>Сервис генерации случайного текста недоступен.</h4>
+      <p>Сколько ждать: ${info}</p>
+      <p>Запустить с текстом, что есть у нас? Нажмите "Ок"</p>
+      <p>Для отмены нажмите "Close"</p>`,
+      {
+        extraClass: 'error',
+        helpHandlerOk: showText.bind(this, tempText),
+        helpHandlerClose: end,
+      }
+    );
   }
 }
