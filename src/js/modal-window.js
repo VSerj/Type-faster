@@ -2,7 +2,7 @@ import { states } from './states';
 
 export function showModalWindow(
   content = '',
-  { extraClass = '', helpHandlerOk = null, helpHandlerClose = null }
+  { extraClass = '', helpHandlerOk = null, helpHandlerClose = null } = {}
 ) {
   document.body.insertAdjacentHTML(
     'beforeend',
@@ -31,7 +31,7 @@ export function showModalWindow(
       ? removeModalWindow(target, helpHandlerOk, helpHandlerClose)
       : document.removeEventListener('click', handleRemoveleModal);
   };
-  
+
   // Делегирование событий для элементов. Так как вставили элементы окна
   // с помощью insertAdjacentHTML
   document.addEventListener('click', handleRemoveleModal);
@@ -50,7 +50,7 @@ function removeModalWindow(target, helpHandlerOk, helpHandlerClose) {
 
   if (
     (helpHandlerClose && target.closest('.modal__btnClose')) ||
-    target.closest('.modal-overlay')
+    (helpHandlerClose && target.closest('.modal-overlay'))
   ) {
     helpHandlerClose(); // обработчик для кнопки CLose и оверлэя
   }
