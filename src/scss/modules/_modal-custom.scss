@@ -1,0 +1,25 @@
+.modal {
+  display: block;
+  top: 10%;
+  z-index: 4;
+  opacity: 1;
+  transform: scaleX(1);
+
+  &-overlay {
+    display: block;
+    z-index: 3;
+    opacity: 0.5;
+  }
+
+  &.error {
+    background-color: rgb(255, 192, 203);
+
+    h2, h3, h4, h5 {
+      font-size: 1.6rem;
+    }
+    
+    p {
+      font-size: 1.1rem
+    }
+  }
+}
