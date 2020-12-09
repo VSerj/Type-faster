@@ -1,7 +1,7 @@
-import { startBtn, stopBtn, radioBtns } from './vars.js';
+import { startBtn, stopBtn, radioBtns, textInput } from './vars.js';
 import { textfromApi } from './text-from-api.js';
 import { states } from './states.js';
-import { startTyping } from './utils_dev/start-typing.js';
+import { initTyping, handleInputChars} from './typing.js';
 import { removeTooltip } from './tooltip.js';
 import { setTime } from './timer.js'
 
@@ -13,14 +13,17 @@ export function initControlBtn() {
 export function end() {
   states.isTyping = false;
   toggleControlParams();
-  document.removeEventListener('keydown', startTyping);
+  document.removeEventListener('keydown', initTyping);
+  textInput.removeEventListener('input', handleInputChars);
+  textInput.value = '';
+  textInput.blur();
   setTime(+radioBtns.querySelector('input:checked').value); // временно
 }
 
 function initStatBtn() {
   toggleControlParams()
   textfromApi();
-  document.addEventListener('keydown', startTyping); // Запускаем отсчет.
+  document.addEventListener('keydown', initTyping);
 }
 
 function initStopBtn() {
