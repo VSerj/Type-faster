@@ -50,4 +50,3 @@ export function handleInputChars() {
   currentCharSpan.classList.add('error'); // Выделить символ как ошибка
   stats.numberOfErrors += 1;
 }
-
