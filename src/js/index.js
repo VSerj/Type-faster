@@ -6,8 +6,10 @@
 
 import { initControlBtn } from './start-stop.js';
 import { initTimeSetting } from './timer.js';
+import { textInput } from './vars.js';
 
 window.addEventListener('load', () => {
   initTimeSetting();
   initControlBtn();
+  textInput.oncut = textInput.oncopy = textInput.onpaste = () => false;
 });
