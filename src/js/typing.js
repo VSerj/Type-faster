@@ -4,7 +4,7 @@ import { states } from './states.js';
 import { textField, textInput } from './vars.js';
 import { countdown } from './timer.js';
 import { removeTooltip } from './tooltip.js';
-import { stats } from './utils_dev/statistics.js';
+import { stats } from './statistics.js';
 import { showModalWindow } from './modal-window.js';
 import { end } from './start-stop.js';
 
@@ -12,6 +12,7 @@ import { end } from './start-stop.js';
 export function initTyping() {
   if (!states.isTyping) {
     states.isTyping = true;
+    stats.startDate = new Date();
     textField.firstElementChild.classList.add('current'); // Устанавливаем текущий символ
     textInput.addEventListener('input', handleInputChars);
     removeTooltip('prestart'); // Удаляем подсказку
@@ -39,7 +40,9 @@ export function handleInputChars() {
 
     if (!currentCharSpan.nextElementSibling) { // Когда все сиволы набраны
       end(); // переходим в стартовое положение
-      return showModalWindow('<h4>Amazing<h>'); //Выходим из фукции + показать результат
+      return showModalWindow(`${stats.createStatsHtml}`, {
+        helpHandlerClose: stats.clearStats.bind(stats),
+      }); //Выходим из фукции + показать результат
     }
 
     return currentCharSpan.nextElementSibling.classList.add('current'); // Следующий символ

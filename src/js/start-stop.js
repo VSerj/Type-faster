@@ -1,9 +1,13 @@
+'use strict';
+
 import { startBtn, stopBtn, radioBtns, textInput } from './vars.js';
 import { textfromApi } from './text-from-api.js';
 import { states } from './states.js';
-import { initTyping, handleInputChars} from './typing.js';
+import { initTyping, handleInputChars } from './typing.js';
 import { removeTooltip } from './tooltip.js';
-import { setTime } from './timer.js'
+import { setTime } from './timer.js';
+import { stats } from './statistics.js';
+import { showModalWindow } from './modal-window.js';
 
 export function initControlBtn() {
   startBtn.addEventListener('click', initStatBtn);
@@ -17,11 +21,14 @@ export function end() {
   textInput.removeEventListener('input', handleInputChars);
   textInput.value = '';
   textInput.blur();
+  showModalWindow(`${stats.createStatsHtml()}`, {
+    helpHandlerClose: stats.clearStats.bind(stats),
+  });
   setTime(+radioBtns.querySelector('input:checked').value); // временно
 }
 
 function initStatBtn() {
-  toggleControlParams()
+  toggleControlParams();
   textfromApi();
   document.addEventListener('keydown', initTyping);
 }
