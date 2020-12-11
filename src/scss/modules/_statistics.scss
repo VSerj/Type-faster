@@ -10,17 +10,25 @@
     top: 15px;
     right: 15px;
   }
-}
 
-.statistics__text {
-  transform: translate(-17px, 7px) rotate(-45deg);
-}
+  &__text {
+    transform: translate(-17px, 7px) rotate(-45deg);
+  }
 
-.statistics__btn {
-  transition: colors 0.3 linear;
-  background-color: #00897b;
-}
+  &__btn {
+    transition: colors 0.3 linear;
+    background-color: rgb(0, 137, 123);
+  }
 
-.statistics__btn:hover {
-  background-color: #26a69a;
+  &__btn:hover {
+    background-color: rgb(38, 166, 154);
+  }
+  &__info {
+    padding: 0.5rem 0 0.5rem 0;
+    font-size: 1.15rem;
+
+    &:nth-child(even) {
+      background-color: rgba(26, 116, 107, 0.1);
+    }
+  }
 }

@@ -1,25 +1,25 @@
 'use strict';
 
 export const stats = {
-  _numberOftypedChars: 0,
-  speedTyping: 0,
-  numberOftypedCharsPerSec: 0,
+  numberOftypedChars: 0,
+  timeLimit: 0,
+  charsPerSec: 0,
   numberOfErrors: 0,
+  timeIdInterval: null,
   startDate: null,
 
-  get numberOftypedChars() {
-    return this._numberOftypedChars;
+  initSpeedTyping(handlerChangeSpeed = null) {
+    this.timeIdInterval = setInterval(() => {
+      const avgSpeed = this.charsPerSec * 60;
+      this.charsPerSec = 0;
+
+      handlerChangeSpeed && handlerChangeSpeed(avgSpeed);
+    }, 1000);
   },
 
-  set numberOftypedChars(value) {
-    this._numberOftypedChars = value;
-    this.numberOftypedCharsPerSec = value;
-  },
-
-  setSpeedTyping() {
-    this.speedTyping = this.numberOftypedCharsPerSec * 60;
-    this.numberOftypedCharsPerSec = 0;
-    console.log(this.speedTyping);
+  addCorrectChar() {
+    this.numberOftypedChars += 1;
+    this.charsPerSec += 1;
   },
 
   getFormatedStartDate() {
@@ -38,25 +38,31 @@ export const stats = {
   },
 
   createStatsHtml() {
-    return `<p class="statistics__info">
-      Время старта: ${this.getFormatedStartDate()}
-    </p>
-    <p class="statistics__info">
-      Количество набранных символов: ${this.numberOftypedChars}
-    </p>
-    <p class="statistics__info">
-      Количство сделанных ошибок: ${this.numberOfErrors}
-    </p>
-    <p class="statistics__info">
-      Speed: ${this.speedTyping}
-    </p>`;
+    return `
+    <h4>Ваш результат</h4>
+    <ul class="statistics__infoList">
+      <li class="statistics__info">
+        Время старта: ${this.getFormatedStartDate()}
+      </li>
+      <li class="statistics__info">
+        Количество набранных символов: ${this.numberOftypedChars}
+      </li>
+      <li class="statistics__info">
+        Количество ошибок: ${this.numberOfErrors}
+      </li>
+      <li class="statistics__info">
+        Скорость набора сим./мин: ${this.numberOftypedChars*60/this.timeLimit}
+      </li>
+    </ul>`;
   },
 
   clearStats() {
+    clearInterval(this.timeIdInterval);
     this.numberOftypedChars = 0;
-    this.speedTyping = 0;
-    this.numberOftypedCharsPerSec = 0;
+    this.charsPerSec = 0;
     this.numberOfErrors = 0;
+    this.timeIdInterval = null;
     this.startDate = null;
+    this.timeLimit = 0;
   },
 };

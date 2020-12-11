@@ -16,11 +16,11 @@ export function initControlBtn() {
 
 export function end() {
   states.isTyping = false;
-  toggleControlParams();
   document.removeEventListener('keydown', initTyping);
   textInput.removeEventListener('input', handleInputChars);
-  textInput.value = '';
   textInput.blur();
+  textInput.value = '';
+  toggleControlParams();
   showModalWindow(`${stats.createStatsHtml()}`, {
     helpHandlerClose: stats.clearStats.bind(stats),
   });
