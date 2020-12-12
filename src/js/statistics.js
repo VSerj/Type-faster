@@ -1,5 +1,7 @@
 'use strict';
 
+import { showModalWindow } from "./modal-window";
+
 export const stats = {
   numberOftypedChars: 0,
   timeLimit: 0,
@@ -72,6 +74,16 @@ export const stats = {
       numberOfErrors: this.numberOfErrors,
     });
     localStorage.setItem('statistics', JSON.stringify(statistics));
+  },
+
+  finishStats() {
+    if (!this.startDate) return;
+
+    clearInterval(this.timeIdInterval);
+    this.updateStatsinLocalStorage();
+    showModalWindow(`${this.createCurrentStatsHtml()}`, {
+      helpHandlerClose: this.clearStats.bind(this),
+    });
   },
 
   clearStats() {

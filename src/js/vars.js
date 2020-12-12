@@ -7,3 +7,4 @@ export const radioBtns = document.querySelector('.radio-buttons');
 export const textInput = document.querySelector('.text-field__input');
 export const indicatorBattery = document.querySelector('.indicator-battery');
 export const indicatorText = document.querySelector('.indicator__text');
+export const statsBtn = document.querySelector('.statistics__btn');

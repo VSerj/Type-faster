@@ -1,13 +1,12 @@
 'use strict';
 
-import { startBtn, stopBtn, radioBtns, textInput } from './vars.js';
+import { startBtn, stopBtn, radioBtns, textInput, statsBtn } from './vars.js';
 import { textfromApi } from './text-from-api.js';
 import { states } from './states.js';
 import { initTyping, handleInputChars } from './typing.js';
 import { removeTooltip } from './tooltip.js';
 import { setTime } from './timer.js';
 import { stats } from './statistics.js';
-import { showModalWindow } from './modal-window.js';
 import { clearUiIndicator } from './utils_dev/indicator.js';
 
 export function initControlBtn() {
@@ -21,14 +20,10 @@ export function end() {
   textInput.removeEventListener('input', handleInputChars);
   textInput.blur();
   textInput.value = '';
-  clearInterval(stats.timeIdInterval);
+  stats.finishStats();
   clearUiIndicator();
   toggleControlParams();
-  showModalWindow(`${stats.createCurrentStatsHtml()}`, {
-    helpHandlerClose: stats.clearStats.bind(stats),
-  });
   setTime(+radioBtns.querySelector('input:checked').value);
-  stats.updateStatsinLocalStorage();
 }
 
 function initStatBtn() {
@@ -46,6 +41,7 @@ function initStopBtn() {
 
 function toggleControlParams() {
   states.isStart = !states.isStart;
+  statsBtn.classList.toggle('disabled');
   radioBtns.classList.toggle('disabled');
   startBtn.classList.toggle('disabled');
   stopBtn.classList.toggle('disabled');
