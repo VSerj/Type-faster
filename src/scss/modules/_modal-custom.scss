@@ -8,6 +8,11 @@
 
   &.modal-fixed-footer {
     height: 65%;
+
+    @media only screen and (max-height: 376px) {
+      height: 85%;
+      max-height: 85%;
+    }
   }
 
   &-footer {

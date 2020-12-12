@@ -10,11 +10,16 @@ export function changeUiIndicator(speed) {
     return;
   }
 
+  clearUiIndicator()
+  indicatorBattery.classList.add(`indicator-battery--${indication}`);
+  indicatorText.textContent = indication;
+}
+
+export function clearUiIndicator() {
   indicatorBattery.classList.remove(
     'indicator-battery--low',
     'indicator-battery--medium',
     'indicator-battery--high'
   );
-  indicatorBattery.classList.add(`indicator-battery--${indication}`);
-  indicatorText.textContent = indication;
+  indicatorText.textContent = '';
 }

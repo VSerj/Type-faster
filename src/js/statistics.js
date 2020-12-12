@@ -57,7 +57,6 @@ export const stats = {
   },
 
   clearStats() {
-    clearInterval(this.timeIdInterval);
     this.numberOftypedChars = 0;
     this.charsPerSec = 0;
     this.numberOfErrors = 0;

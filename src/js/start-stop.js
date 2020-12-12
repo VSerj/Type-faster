@@ -8,6 +8,7 @@ import { removeTooltip } from './tooltip.js';
 import { setTime } from './timer.js';
 import { stats } from './statistics.js';
 import { showModalWindow } from './modal-window.js';
+import { clearUiIndicator } from './utils_dev/indicator.js';
 
 export function initControlBtn() {
   startBtn.addEventListener('click', initStatBtn);
@@ -21,6 +22,8 @@ export function end() {
   textInput.blur();
   textInput.value = '';
   toggleControlParams();
+  clearInterval(stats.timeIdInterval);
+  clearUiIndicator();
   showModalWindow(`${stats.createStatsHtml()}`, {
     helpHandlerClose: stats.clearStats.bind(stats),
   });

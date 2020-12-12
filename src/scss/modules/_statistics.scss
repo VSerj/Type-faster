@@ -23,9 +23,15 @@
   &__btn:hover {
     background-color: rgb(38, 166, 154);
   }
+
   &__info {
     padding: 0.5rem 0 0.5rem 0;
     font-size: 1.15rem;
+    
+    @media only screen and (max-width: 680px) {
+      font-size: 1rem;;
+      padding: 0.3rem 0 0.3rem 0;
+    }
 
     &:nth-child(even) {
       background-color: rgba(26, 116, 107, 0.1);
