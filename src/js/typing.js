@@ -43,7 +43,7 @@ export function handleInputChars() {
 
     if (!currentCharSpan.nextElementSibling) { // Когда все сиволы набраны
       end(); // переходим в стартовое положение
-      return showModalWindow(`${stats.createStatsHtml}`, {
+      return showModalWindow(`${stats.createCurrentStatsHtml}`, {
         helpHandlerClose: stats.clearStats.bind(stats),
       }); //Выходим из фукции + показать результат
     }

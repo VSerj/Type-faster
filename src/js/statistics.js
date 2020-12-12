@@ -37,7 +37,11 @@ export const stats = {
     return `${dFormat.slice(0, 3).join('-')} ${dFormat.slice(3).join(':')}`;
   },
 
-  createStatsHtml() {
+  calcFinishSpeedCPS() {
+    return this.numberOftypedChars * 60 / this.timeLimit
+  },
+
+  createCurrentStatsHtml() {
     return `
     <h4>Ваш результат</h4>
     <ul class="statistics__infoList">
@@ -51,9 +55,23 @@ export const stats = {
         Количество ошибок: ${this.numberOfErrors}
       </li>
       <li class="statistics__info">
-        Скорость набора сим./мин: ${this.numberOftypedChars*60/this.timeLimit}
+        Скорость набора сим./мин: ${this.calcFinishSpeedCPS()}
       </li>
     </ul>`;
+  },
+
+  updateStatsinLocalStorage() {
+    const statistics = localStorage.getItem('statistics')
+      ? JSON.parse(localStorage.getItem('statistics'))
+      : [];
+
+    statistics.push({
+      id: statistics.length ? statistics.length + 1 : 1,
+      startDate: this.getFormatedStartDate(),
+      speed: this.calcFinishSpeedCPS(),
+      numberOfErrors: this.numberOfErrors,
+    });
+    localStorage.setItem('statistics', JSON.stringify(statistics));
   },
 
   clearStats() {

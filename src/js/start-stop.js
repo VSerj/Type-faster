@@ -21,13 +21,14 @@ export function end() {
   textInput.removeEventListener('input', handleInputChars);
   textInput.blur();
   textInput.value = '';
-  toggleControlParams();
   clearInterval(stats.timeIdInterval);
   clearUiIndicator();
-  showModalWindow(`${stats.createStatsHtml()}`, {
+  toggleControlParams();
+  showModalWindow(`${stats.createCurrentStatsHtml()}`, {
     helpHandlerClose: stats.clearStats.bind(stats),
   });
-  setTime(+radioBtns.querySelector('input:checked').value); // временно
+  setTime(+radioBtns.querySelector('input:checked').value);
+  stats.updateStatsinLocalStorage();
 }
 
 function initStatBtn() {
