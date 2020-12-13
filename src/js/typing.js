@@ -11,6 +11,8 @@ import { changeUiIndicator } from './utils_dev/indicator.js';
 
 // Для слушателя keydown
 export function initTyping() {
+  if (states.isLoading) return;
+
   if (!states.isTyping) {
     states.isTyping = true;
     stats.startDate = Date.now();
