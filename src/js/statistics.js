@@ -1,6 +1,6 @@
 'use strict';
 
-import { showModalWindow } from "./modal-window";
+import { showModalWindow } from './modal-window';
 
 export const stats = {
   numberOftypedChars: 0,
@@ -8,7 +8,7 @@ export const stats = {
   charsPerSec: 0,
   numberOfErrors: 0,
   timeIdInterval: null,
-  startDate: null,
+  startDate: 0,
 
   initSpeedTyping(handlerChangeSpeed = null) {
     this.timeIdInterval = setInterval(() => {
@@ -25,22 +25,11 @@ export const stats = {
   },
 
   getFormatedStartDate() {
-    const dFormat = [
-      `0${this.startDate.getDate()}`,
-      `0${this.startDate.getMonth() + 1}`,
-      `${this.startDate.getFullYear()}`,
-      `0${this.startDate.getHours()}`,
-      `0${this.startDate.getMinutes()}`,
-      `0${this.startDate.getSeconds()}`,
-    ].map((component, index) =>
-      index !== 2 ? component.slice(-2) : component
-    );
-
-    return `${dFormat.slice(0, 3).join('-')} ${dFormat.slice(3).join(':')}`;
+    return new Date(this.startDate).toLocaleString();
   },
 
   calcFinishSpeedCPS() {
-    return this.numberOftypedChars * 60 / this.timeLimit
+    return (this.numberOftypedChars * 60) / this.timeLimit;
   },
 
   createCurrentStatsHtml() {
