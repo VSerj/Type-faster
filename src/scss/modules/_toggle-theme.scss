@@ -1,0 +1,23 @@
+.toggle-theme {
+  position: absolute;
+  top: 2%;
+  left: 5%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border-right: 8px solid #423d3d;
+  box-shadow: 0px 0 8px #a2a499;
+  background: #f8f8f8;
+  transform: rotate(-91deg);
+  transition: all 0.3s;
+  cursor: pointer;
+
+  @media only screen and (min-width: $medium-screen) {
+    left: 18%;
+  }
+
+  input {
+    width: 0;
+    height: 0;
+  }
+}
