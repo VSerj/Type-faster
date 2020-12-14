@@ -1,0 +1,76 @@
+.night-theme {
+  background-color: rgb(34, 34, 34);
+  color: rgb(134, 134, 134);
+
+  [type="radio"].with-gap:checked + label:after,
+  [type="radio"]:checked + label:after {
+    background-color: rgb(22, 64, 62);
+  }
+
+  [type="radio"].with-gap:checked + label:after,
+  [type="radio"].with-gap:checked + label:before,
+  [type="radio"]:checked + label:after {
+    border-color: rgb(22, 64, 62);
+  }
+
+  .text-field__area {
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12),
+      0 5px 5px -3px rgba(0, 0, 0, 0.3);
+    background-color: rgb(28, 29, 28);
+    color: rgb(104, 104, 104);
+  }
+
+  .char {
+    &.correct {
+      color: rgb(46, 148, 138);
+    }
+    &.error {
+      background-color: rgb(72, 30, 38);
+    }
+  }
+
+  .btn,
+  .btn-floating {
+    color: rgb(179, 179, 179);
+    background-color: rgb(22, 64, 62);
+
+    &.disabled {
+      background-color: #262626 !important;
+      color: #474747 !important;
+    }
+
+    &:hover {
+      color: rgb(255, 255, 255);
+      background-color: rgb(27, 112, 104);
+    }
+  }
+
+  .indicator-battery {
+    filter: brightness(0.5);
+  }
+
+  .modal {
+    background-color: rgb(28, 28, 28);
+
+    &-footer {
+      background-color: rgb(28, 28, 28);
+    }
+
+    &.error {
+      background-color: rgb(62, 31, 31);
+    }
+
+    &__btnCustom,
+    &__btnClose {
+      color: rgb(134, 134, 134);
+      transition: color 0.3s;
+      &:hover {
+        color: rgb(46, 148, 138);
+      }
+    }
+  }
+
+  .progress {
+    background-color: rgb(22, 64, 62);
+  }
+}
