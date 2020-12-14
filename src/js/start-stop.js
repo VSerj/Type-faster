@@ -1,9 +1,13 @@
-import { startBtn, stopBtn, radioBtns, textInput } from './vars.js';
+'use strict';
+
+import { startBtn, stopBtn, radioBtns, textInput, statsBtn } from './vars.js';
 import { textfromApi } from './text-from-api.js';
 import { states } from './states.js';
-import { initTyping, handleInputChars} from './typing.js';
+import { initTyping, handleInputChars } from './typing.js';
 import { removeTooltip } from './tooltip.js';
-import { setTime } from './timer.js'
+import { setTime } from './timer.js';
+import { stats } from './statistics.js';
+import { clearUiIndicator } from './utils_dev/indicator.js';
 
 export function initControlBtn() {
   startBtn.addEventListener('click', initStatBtn);
@@ -12,16 +16,18 @@ export function initControlBtn() {
 
 export function end() {
   states.isTyping = false;
-  toggleControlParams();
   document.removeEventListener('keydown', initTyping);
   textInput.removeEventListener('input', handleInputChars);
-  textInput.value = '';
   textInput.blur();
-  setTime(+radioBtns.querySelector('input:checked').value); // временно
+  textInput.value = '';
+  stats.finishStats();
+  clearUiIndicator();
+  toggleControlParams();
+  setTime(+radioBtns.querySelector('input:checked').value);
 }
 
 function initStatBtn() {
-  toggleControlParams()
+  toggleControlParams();
   textfromApi();
   document.addEventListener('keydown', initTyping);
 }
@@ -35,6 +41,7 @@ function initStopBtn() {
 
 function toggleControlParams() {
   states.isStart = !states.isStart;
+  statsBtn.classList.toggle('disabled');
   radioBtns.classList.toggle('disabled');
   startBtn.classList.toggle('disabled');
   stopBtn.classList.toggle('disabled');

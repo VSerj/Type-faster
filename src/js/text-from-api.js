@@ -53,7 +53,8 @@ function handleError(error) {
       <p>Для отмены нажмите "Close"</p>`,
       {
         extraClass: 'error',
-        helpHandlerOk: showText.bind(this, tempText),
+        customBtnText: 'Ок',
+        helpHandlerCustomBtn: showText.bind(this, tempText),
         helpHandlerClose: end,
       }
     );
@@ -72,7 +73,8 @@ function handleError(error) {
       <p>Для отмены нажмите "Close"</p>`,
       {
         extraClass: 'error',
-        helpHandlerOk: showText.bind(this, tempText),
+        customBtnText: 'Ок',
+        helpHandlerCustomBtn: showText.bind(this, tempText),
         helpHandlerClose: end,
       }
     );

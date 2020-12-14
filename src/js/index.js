@@ -5,11 +5,13 @@
 'use strict';
 
 import { initControlBtn } from './start-stop.js';
+import { showStats } from './statistics-btn.js';
 import { initTimeSetting } from './timer.js';
-import { textInput } from './vars.js';
+import { statsBtn, textInput } from './vars.js';
 
 window.addEventListener('load', () => {
   initTimeSetting();
   initControlBtn();
   textInput.oncut = textInput.oncopy = textInput.onpaste = () => false;
+  statsBtn.addEventListener('click', showStats);
 });
