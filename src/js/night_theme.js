@@ -8,8 +8,8 @@ export function initSwitchNightTheme() {
 
   document
     .querySelector('.toggle-theme')
-    .addEventListener('change', ({ target }) => {
+    .addEventListener('change', ({ target: { checked } }) => {
       document.body.classList.toggle('night-theme');
-      localStorage.setItem('night-theme', `${target.checked}`);
+      localStorage.setItem('night-theme', `${checked}`);
     });
 }

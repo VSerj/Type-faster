@@ -10,9 +10,7 @@ import { showStats } from './statistics-btn.js';
 import { initTimeSetting } from './timer.js';
 import { statsBtn, textInput } from './vars.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  initSwitchNightTheme();
-});
+document.addEventListener('DOMContentLoaded', initSwitchNightTheme);
 
 window.addEventListener('load', () => {
   initTimeSetting();
