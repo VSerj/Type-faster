@@ -20,7 +20,7 @@ export function showStats() {
       }, '<h4>Все результаты</h4>');
 
   showModalWindow(content, {
-    customBtnText: 'Clear All and close',
-    helpHandlerCustomBtn: () => localStorage.clear(),
+    customBtnText: 'Clear All',
+    helpHandlerCustomBtn: () => localStorage.removeItem('statistics'),
   });
 }

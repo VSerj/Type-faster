@@ -26,8 +26,16 @@
     opacity: 0.3;
   }
 
+  &__btnCustom,
+  &__btnClose {
+    transition: color 0.3s;
+    &:hover {
+      color: rgb(48, 172, 172);
+    }
+  }
+
   &.error {
-    background-color: rgb(255, 192, 203);
+    background-color: rgb(245, 204, 211);
 
     h2,
     h3,

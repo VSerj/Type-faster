@@ -1,5 +1,3 @@
-import { states } from './states';
-
 export function showModalWindow(
   content = '',
   {
@@ -56,13 +54,9 @@ export function showModalWindow(
       .forEach(elem => elem.remove());
 
     document.removeEventListener('click', handleRemoveleModal);
-
-    return (states.isModalWindow = false);
   }
 
   // Делегирование событий для элементов. Так как вставили элементы окна
   // с помощью insertAdjacentHTML
   document.addEventListener('click', handleRemoveleModal);
-
-  return (states.isModalWindow = true);
 }

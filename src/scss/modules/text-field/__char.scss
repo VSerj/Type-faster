@@ -1,7 +1,8 @@
-.char.correct {
-  color: rgb(38, 166, 154);
-}
-
-.char.error {
-  background-color: rgb(255, 192, 203);;
+.char {
+  &.correct {
+    color: rgb(38, 166, 154);
+  }
+  &.error {
+    background-color: rgb(255, 192, 203);
+  }
 }
