@@ -1,10 +1,10 @@
 'use strict';
 
-import { indicatorBattery, indicatorText } from '../vars';
+import { indicatorBattery, indicatorText } from './vars';
 
 export function changeUiIndicator(speed) {
   const indication =
-    speed < 70 ? 'low' : speed >= 70 && speed < 160 ? 'medium' : 'high';
+    speed < 70 ? 'low' : speed >= 70 && speed < 170 ? 'medium' : 'high';
 
   if (indicatorBattery.classList.contains(`indicator-battery--${indication}`)) {
     return;

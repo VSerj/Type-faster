@@ -7,7 +7,7 @@ import { initTyping, handleInputChars } from './typing.js';
 import { removeTooltip } from './tooltip.js';
 import { setTime } from './timer.js';
 import { stats } from './statistics.js';
-import { clearUiIndicator } from './utils_dev/indicator.js';
+import { clearUiIndicator } from './indicator.js';
 
 export function initControlBtn() {
   startBtn.addEventListener('click', initStatBtn);

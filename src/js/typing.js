@@ -7,7 +7,7 @@ import { removeTooltip } from './tooltip.js';
 import { stats } from './statistics.js';
 import { showModalWindow } from './modal-window.js';
 import { end } from './start-stop.js';
-import { changeUiIndicator } from './utils_dev/indicator.js';
+import { changeUiIndicator } from './indicator.js';
 
 // Для слушателя keydown
 export function initTyping() {
