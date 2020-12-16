@@ -5,13 +5,14 @@ import { indicatorBattery, indicatorText } from './vars';
 export function changeUiIndicator(speed) {
   const indication =
     speed < 70 ? 'low' : speed >= 70 && speed < 170 ? 'medium' : 'high';
+  const indicatorBatteryClassList = indicatorBattery.classList;
 
-  if (indicatorBattery.classList.contains(`indicator-battery--${indication}`)) {
+  if (indicatorBatteryClassList.contains(`indicator-battery--${indication}`)) {
     return;
   }
 
-  clearUiIndicator()
-  indicatorBattery.classList.add(`indicator-battery--${indication}`);
+  clearUiIndicator();
+  indicatorBatteryClassList.add(`indicator-battery--${indication}`);
   indicatorText.textContent = indication;
 }
 
