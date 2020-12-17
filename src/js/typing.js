@@ -8,6 +8,7 @@ import { stats } from './statistics.js';
 import { showModalWindow } from './modal-window.js';
 import { end } from './start-stop.js';
 import { changeUiIndicator } from './indicator.js';
+import { observeScrollUpText } from './scroll-up_text.js';
 
 // Для слушателя keydown
 export function initTyping() {
@@ -43,15 +44,18 @@ export function handleInputChars() {
     stats.addCorrectChar();
     currentCharSpanClassList.add('correct'); // Выделить символ как корректный
     currentCharSpanClassList.remove('current');
+    observeScrollUpText(currentCharSpan, textField);
 
     if (!currentCharSpan.nextElementSibling) { // Когда все сиволы набраны
       end(); // переходим в стартовое положение
-      return showModalWindow(`${stats.createCurrentStatsHtml}`, {
+      return showModalWindow(`${stats.createCurrentStatsHtml()}`, {
         helpHandlerClose: stats.clearStats.bind(stats),
       }); //Выходим из фукции + показать результат
     }
 
-    return currentCharSpan.nextElementSibling.classList.add('current'); // Следующий символ
+    currentCharSpan.nextElementSibling.classList.add('current'); // Следующий символ
+    
+    return;
   }
 
   if (currentCharSpanClassList.contains('error')) return; //Уже есть ошибка
