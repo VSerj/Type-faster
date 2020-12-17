@@ -1,4 +1,4 @@
-// Если 2Хвысота текущего символаlet
+'use strict';
 
 export function observeScrollUpText(char, observationArea) {
   const {
