@@ -1,9 +1,37 @@
 .header {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  margin: 0 0 1.1rem 0;
 
-  @media only screen and (min-width: 0) {
+  @media only screen and (min-width: $medium-screen) {
+    margin: 0 0 1.5rem 0;
+  }
+
+  @media only screen and (max-height: 455px) {
     margin: 0 0 1.1rem 0;
+  }
+
+  &__menu {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    align-items: center;
+
+    @media only screen and (min-width: $medium-screen) {
+      right: 10%;
+    }
+
+    @media only screen and (min-width: 1400px) {
+      right: 20%;
+    }
+
+    > *:first-child {
+      margin-right: 15px;
+
+      @media only screen and (min-width: $small-screen) {
+        margin-right: 30px;
+      }
+    }
   }
 }
 
@@ -11,12 +39,13 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2rem minmax(100px, 50vh) 1fr;
+  gap: 1rem;
 
   @media only screen and (min-width: $small-screen) {
     gap: 1.5rem;
   }
 
-  @media only screen and (min-width: 0) {
+  @media only screen and (max-height: 455px) {
     gap: 1rem;
   }
 }
