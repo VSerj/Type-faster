@@ -1,10 +1,11 @@
 # Type faster
 
 ### What is that?
-  It will be a simple keyboard trainer (rus layout).
+  Simple keyboard trainer (rus layout). https://vserj.github.io/typefaster/
 
   You will need to choose a time for typing, at the end of the time you can view statistics.
 When typing, an indicator of the typing speed will be shown, and errors will also be taken into account. A typing error prevents you from continuing typing until you correct it.
+You can turn on the night theme.
 The application receives the text from the API.
 
 ### Run project
@@ -15,9 +16,10 @@ npm v6.4.1
 node v10.15.3
 
 ### Tools and technologies 
-* native JS (es6)
+* native JS (es6+)
   - promise
   - fetch
+  - localStorage
   
 * pug
 * sass
