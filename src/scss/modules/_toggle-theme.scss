@@ -1,7 +1,4 @@
 .toggle-theme {
-  position: absolute;
-  top: 2%;
-  left: 5%;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -11,10 +8,6 @@
   transform: rotate(-91deg);
   transition: all 0.3s;
   cursor: pointer;
-
-  @media only screen and (min-width: $medium-screen) {
-    left: 18%;
-  }
 
   input {
     width: 0;

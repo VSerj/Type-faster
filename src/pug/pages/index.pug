@@ -1,15 +1,16 @@
 extend ../layout/base.pug
 block content
   header.header
-    label.toggle-theme
-      input(type="checkbox" name="theme")
     h1.title.thin
       | Type faster
-    .statistics
-      .statistics__text
-        | Stats
-      a.statistics__btn.btn-floating
-        i.material-icons insert_chart
+    .header__menu
+      label.toggle-theme
+        input(type="checkbox" name="theme")
+      .statistics
+        .statistics__text
+          | Stats
+        a.statistics__btn.btn-floating
+          i.material-icons insert_chart
 
   main.main.container
     .radio-buttons
