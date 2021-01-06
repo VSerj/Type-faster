@@ -1,6 +1,9 @@
 # Type faster
 
-### What is that?
+<img src="./README_PREVIEW.png" />
+
+## What is that?
+
   Simple keyboard trainer (rus layout). https://vserj.github.io/typefaster/
 
   You will need to choose a time for typing, at the end of the time you can view statistics.
@@ -8,14 +11,16 @@ When typing, an indicator of the typing speed will be shown, and errors will als
 You can turn on the night theme.
 The application receives the text from the API.
 
-### Run project
+## Run project
+
 To run with a module devServer: `npm run dev`. 
 You also need to download `npm packages`.
     
 npm v6.4.1
 node v10.15.3
 
-### Tools and technologies 
+## Tools and technologies 
+
 * native JS (es6+)
   - promise
   - fetch
@@ -27,7 +32,8 @@ node v10.15.3
 * [Materialize](http://archives.materializecss.com/0.100.2/buttons.html)
 * [FishText API](https://fish-text.ru/api)
 
-### browserslist '> 0.4%, not IE 11'
+## browserslist '> 0.4%, not IE 11'
+
 and_chr 86
 and_uc 12.12
 chrome 86
